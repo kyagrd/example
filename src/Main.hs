@@ -31,11 +31,11 @@ data File = URL String | Local FilePath
 --   Modify this value to read logs from
 --   other sources.
 logFiles :: [File]
-logFiles =
+logFiles = tail $ tail $
   [ Local "sellings.log"
   , Local "sellings2.log"
   , URL "http://daniel-diaz.github.io/misc/sellings3.log"
-    ]
+  ]
 
 getFile :: File -> IO ByteString
 -- simpleHttp gets a lazy bytestring, while we
